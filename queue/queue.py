@@ -1,3 +1,5 @@
+from typing import Any, Optional
+
 """
 A queue is a data structure whose primary purpose is to store and
 return elements in First In First Out order. 
@@ -13,16 +15,17 @@ return elements in First In First Out order.
 Stretch: What if you could only use instances of your Stack class to implement the Queue?
          What would that look like? How many Stacks would you need? Try it!
 """
+
+
 class Queue:
     def __init__(self):
-        self.size = 0
-        # self.storage = ?
+        self._storage = []
     
-    def __len__(self):
-        pass
+    def __len__(self) -> int:
+        return len(self._storage)
 
-    def enqueue(self, value):
-        pass
+    def enqueue(self, value: Any) -> None:
+        self._storage.append(value)
 
-    def dequeue(self):
-        pass
+    def dequeue(self) -> Optional[Any]:
+        return self._storage.pop(0) if self._storage else None
