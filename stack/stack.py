@@ -1,4 +1,5 @@
 from typing import Any, Optional
+
 from singly_linked_list.singly_linked_list import LinkedList
 
 """
