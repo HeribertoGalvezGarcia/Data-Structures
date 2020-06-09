@@ -1,3 +1,5 @@
+from typing import Any, Optional
+
 """
 A stack is a data structure whose primary purpose is to store and
 return elements in Last In First Out order. 
@@ -10,16 +12,17 @@ return elements in Last In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Stack?
 """
+
+
 class Stack:
-    def __init__(self):
-        self.size = 0
-        # self.storage = ?
+    def __init__(self) -> None:
+        self._storage = []
 
-    def __len__(self):
-        pass
+    def __len__(self) -> int:
+        return len(self._storage)
 
-    def push(self, value):
-        pass
+    def push(self, value: Any) -> None:
+        self._storage.append(value)
 
-    def pop(self):
-        pass
+    def pop(self) -> Optional[Any]:
+        return self._storage.pop() if self._storage else None
