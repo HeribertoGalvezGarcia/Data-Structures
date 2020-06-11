@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-from typing import Any, Optional
+from typing import Optional, TypeVar
+
+
+T = TypeVar('T')
 
 
 class ListNode:
@@ -8,12 +11,12 @@ class ListNode:
     as well as its next node in the List.
     """
 
-    def __init__(self, value: Any, prev: ListNode = None, next_: ListNode = None) -> None:
+    def __init__(self, value: T, prev: ListNode = None, next_: ListNode = None) -> None:
         self.value = value
         self.prev = prev
         self.next = next_
 
-    def insert_after(self, value: Any) -> None:
+    def insert_after(self, value: T) -> None:
         """Wrap the given value in a ListNode and insert it
         after this node. Note that this node could already
         have a next node it is point to.
@@ -25,7 +28,7 @@ class ListNode:
         if current_next is not None:
             current_next.prev = self.next
 
-    def insert_before(self, value: Any) -> None:
+    def insert_before(self, value: T) -> None:
         """Wrap the given value in a ListNode and insert it
         before this node. Note that this node could already
         have a previous node it is point to.
@@ -68,10 +71,10 @@ class DoublyLinkedList:
         self._current = current.next
         return current
 
-    def __len__(self) -> int:
+    def __len__(self) -> T:
         return sum(1 for _ in self)
 
-    def add_to_head(self, value: Any) -> None:
+    def add_to_head(self, value: T) -> None:
         """Wraps the given value in a ListNode and inserts it
         as the new head of the list. Don't forget to handle
         the old head node's previous pointer accordingly.
@@ -83,7 +86,7 @@ class DoublyLinkedList:
         else:
             self.head = self.tail = ListNode(value)
 
-    def remove_from_head(self) -> Optional[Any]:
+    def remove_from_head(self) -> Optional[T]:
         """Removes the List's current head node, making the
         current head's next node the new head of the List.
         Returns the value of the removed Node.
@@ -99,7 +102,7 @@ class DoublyLinkedList:
 
         return current.value
 
-    def add_to_tail(self, value: Any) -> None:
+    def add_to_tail(self, value: T) -> None:
         """Wraps the given value in a ListNode and inserts it
         as the new tail of the list. Don't forget to handle
         the old tail node's next pointer accordingly.
@@ -111,7 +114,7 @@ class DoublyLinkedList:
         else:
             self.head = self.tail = ListNode(value)
 
-    def remove_from_tail(self) -> Optional[Any]:
+    def remove_from_tail(self) -> Optional[T]:
         """Removes the List's current tail node, making the
         current tail's previous node the new tail of the List.
         Returns the value of the removed Node.
@@ -168,7 +171,7 @@ class DoublyLinkedList:
         if node is self.tail:
             self.tail = node.prev
 
-    def get_max(self) -> Optional[Any]:
+    def get_max(self) -> Optional[T]:
         """Returns the highest value currently in the list"""
 
         if self.head is None:
